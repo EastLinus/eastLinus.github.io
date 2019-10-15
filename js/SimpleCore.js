@@ -586,6 +586,8 @@ var SimpleCore = {
     },
     //外部调用初始化
     init: function (params) {
+      console.log('传递的信息')
+      console.log(params)
         SimpleCore.initParams(params);
         LocalSearch.initParams(SimpleCore.localSearch);
         $(window).resize(function () {
@@ -612,16 +614,19 @@ var SimpleCore = {
         $(document).on('click', '.popup', function (e) {
             e.stopPropagation();
         });
-        $(document).on('click', '.btn-sns-qr', function (e) {
+        /*$(document).on('click', '.btn-sns-qr', function (e) {
+          console.log('关闭聊天')
             e.preventDefault();
             if (SimpleCore.snsQRCode != '') {
                 SimpleCore.alert('同性聊天交友请上车','<img style="width:180px;background:#fff;" src="' + SimpleCore.snsQRCode + '">');
             } else {
                 SimpleCore.alert('未开通自定义功能','<h4 style="text-align: center;margin: 0">联系博主试试看 ：）</h4>');
             }
-        });
+        });*/
         $(document).on('click', '.btn-thumbs-up', function (e) {
             e.preventDefault();
+            console.log('图片信息')
+            console.log(SimpleCore.donateImg)
             if (SimpleCore.donateImg != '') {
                 SimpleCore.alert('随意打赏，谢谢','<img style="width:180px;background:#fff;" src="' + SimpleCore.donateImg + '">');
             } else {
@@ -727,8 +732,10 @@ var SimpleCore = {
             $('body').addClass('night-mode');
             btn.find('i').attr('class', 'fa fa-moon-o');
             $(".cover-img").css({
-                'background': "url('/images/cover-night.jpg')",
-                'background-image': '/images/cover-night.jpg',
+                // 'background': "url('/images/cover-night.jpg')",
+                // 'background-image': '/images/cover-night.jpg',
+                'background': "url('https://i.loli.net/2019/10/15/u8c2m9U3TKaHjyw.jpg')",
+                'background-image': 'https://i.loli.net/2019/10/15/u8c2m9U3TKaHjyw.jpg',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
@@ -737,8 +744,10 @@ var SimpleCore = {
             $('body').removeClass('night-mode');
             btn.find('i').attr('class', 'fa fa-sun-o');
             $(".cover-img").css({
-                'background': "url('/images/cover-day.jpg')",
-                'background-image': '/images/cover-day.jpg',
+                // 'background': "url('/images/cover-day.jpg')",
+                // 'background-image': '/images/cover-day.jpg',
+                'background': "url('https://i.loli.net/2019/10/15/7V6zIxnWkOsZRqN.jpg')",
+                'background-image': 'https://i.loli.net/2019/10/15/7V6zIxnWkOsZRqN.jpg',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
@@ -746,6 +755,8 @@ var SimpleCore = {
         }
     },
     alert: function (title,msg) {
+      console.log(title)
+      console.log(msg)
         var id = 'notice-' + (new Date().getTime());
         var html = '<div id="' + id + '" class="notice-item">'
             + '<span class="notice-item-close"><i class="fa fa-close"></i></span>'
@@ -759,10 +770,12 @@ var SimpleCore = {
             return false;
         });
         //居中显示，于8秒后自动关闭
-        $('#notice').css('margin-right', -$('#notice').width() / 2);
-        setTimeout(function () {
-            $('#' + id).remove();
-        }, 8000);
+        console.log('不关闭')
+
+        // $('#notice').css('margin-right', -$('#notice').width() / 2);
+        // setTimeout(function () {
+        //     $('#' + id).remove();
+        // }, 8000);
     },
     setLocalData: function (key, value) {
         if (window.localStorage) {
